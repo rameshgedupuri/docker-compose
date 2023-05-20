@@ -1,0 +1,25 @@
+version: '3'
+
+services:
+  web:
+    build: .
+    ports:
+      - "5001:5000"
+    networks:
+      - web-network
+  db:
+    platform: linux/x86_64
+    image: mysql:5.7
+    environment:
+      - MYSQL_ROOT_PASSWORD=${DB_PASSWORD} # set the password by export DB_PASSWORD=password
+    volumes:
+      - mysql_data:/var/lib/mysql
+    networks:
+      - db-network
+
+networks:
+  db-network:
+  web-network:
+
+volumes:
+  mysql_data:

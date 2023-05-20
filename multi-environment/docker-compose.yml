@@ -1,0 +1,23 @@
+# for running in docker compose with prebuilt images
+
+# version is now using "compose spec"
+# v2 and v3 are now combined!
+# docker-compose v1.27+ required
+
+version: '3.1'
+services:
+  vote:
+    image: dockersamples/examplevotingapp_vote
+
+  result:
+    image: dockersamples/examplevotingapp_result
+
+  worker:
+    image: dockersamples/examplevotingapp_worker
+
+
+  redis:
+    image: redis:alpine
+
+  db:
+    image: postgres:15-alpine
